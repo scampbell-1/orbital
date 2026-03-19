@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Setting — Orbital Study Guide</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <div id="starfield"></div>
+  <div class="glow glow-1"></div>
+  <div class="glow glow-2"></div>
+
+  <nav>
+    <a class="nav-brand" href="index.html">Orbital</a>
+    <ul class="nav-links">
+      <li><a href="index.html">Overview</a></li>
+      <li><a href="characters.html">Characters</a></li>
+      <li><a href="themes.html">Themes</a></li>
+      <li><a href="language.html">Language</a></li>
+      <li><a href="setting.html" class="active">Setting</a></li>
+      <li><a href="structure.html">Structure</a></li>
+      <li><a href="quotes.html">Quotes</a></li>
+      <li><a href="quiz.html">Quiz</a></li>
+    </ul>
+  </nav>
+
+  <main>
+
+    <div class="hero">
+      <p class="hero-eyebrow">Orbital &nbsp;·&nbsp; Setting</p>
+      <h1>Where the Novel Lives</h1>
+      <p class="hero-sub">Two settings exist in <em>Orbital</em>: the sealed interior of the ISS, and the whole of planet Earth below. Neither is backdrop — both are active presences in the novel.</p>
+    </div>
+
+    <div class="stat-strip">
+      <div class="stat">
+        <div class="stat-value">~400</div>
+        <div class="stat-label">km above Earth</div>
+      </div>
+      <div class="stat">
+        <div class="stat-value">28,000</div>
+        <div class="stat-label">km/h velocity</div>
+      </div>
+      <div class="stat">
+        <div class="stat-value">45 min</div>
+        <div class="stat-label">Day/night cycle</div>
+      </div>
+      <div class="stat">
+        <div class="stat-value">0</div>
+        <div class="stat-label">Gravity</div>
+      </div>
+    </div>
+
+    <div class="divider"><span>✦</span></div>
+
+    <h2>The International Space Station</h2>
+    <div class="card">
+      <p>The ISS is the size of a football field but livable space is closer to that of a six-bedroom house. It is loud — filled with the constant hum of life-support systems — and extraordinarily cramped. Crew members sleep in sleeping bags tethered in small personal compartments. They exercise for hours each day to prevent bone and muscle loss.</p>
+      <p>Harvey renders this environment with precision. The ISS in <em>Orbital</em> is not a glamorous or heroic place — it is a workplace where people eat reconstituted food, manage maintenance schedules, and try to sleep while floating. This deliberate unglamorousness is important: Harvey wants to make the extraordinary ordinary, and the ordinary extraordinary.</p>
+      <div class="tags">
+        <span class="tag">Confinement</span>
+        <span class="tag">Routine</span>
+        <span class="tag">Artificial environment</span>
+        <span class="tag">The body in microgravity</span>
+      </div>
+    </div>
+
+    <div class="card">
+      <span class="badge">Key Space</span>
+      <h3>The Cupola</h3>
+      <p>The cupola is a dome-shaped observation module with seven windows looking down at Earth. It is the novel's most significant physical space — the place where the crew goes to look, to think, to grieve, to wonder. Harvey returns to it repeatedly. It functions as a threshold: between the sealed interior and the void; between the human world and the planetary one; between doing and simply being.</p>
+      <div class="tags">
+        <span class="tag">The view</span>
+        <span class="tag">Threshold space</span>
+        <span class="tag">Contemplation</span>
+      </div>
+    </div>
+
+    <div class="divider"><span>✦</span></div>
+
+    <h2>Earth as Setting</h2>
+    <div class="card">
+      <p>Earth in <em>Orbital</em> is not a single place — it is every place, seen whole. Harvey describes specific geographies as the station passes over them: the Sahara, the Pacific, the Himalayas, storm systems over the Philippines, the lights of cities at night. Each pass brings a different face of the planet.</p>
+      <p>But Earth is also a setting the crew cannot enter. They can see it, name it, mourn it — but they cannot touch it. This inaccessibility is one of the novel's defining tensions. The most familiar place in existence becomes strange and unreachable.</p>
+      <div class="tags">
+        <span class="tag">The whole planet</span>
+        <span class="tag">Inaccessibility</span>
+        <span class="tag">Strangeness of the familiar</span>
+        <span class="tag">Environmental damage visible</span>
+      </div>
+    </div>
+
+    <div class="divider"><span>✦</span></div>
+
+    <h2>Time as Setting</h2>
+    <div class="card">
+      <p>Harvey treats time itself as a kind of setting. On the ISS, time is dislocated: clocks run on UTC, divorced from any particular place's sunrise or sunset. Sixteen sunrises happen in twenty-four hours. The novel takes place in one day — but that day contains multitudes.</p>
+      <p>This temporal strangeness reinforces the novel's themes of impermanence and the inadequacy of human categories. Time, like national borders, looks different from 400 kilometres up.</p>
+      <div class="tags">
+        <span class="tag">Dislocation</span>
+        <span class="tag">Recurrence</span>
+        <span class="tag">The eternal present</span>
+      </div>
+    </div>
+
+    <div class="divider"><span>✦</span></div>
+
+    <div class="highlight">
+      <h4>Essay Angle — Setting</h4>
+      <p>When writing about setting, avoid treating it as mere backdrop. In <em>Orbital</em>, setting is argument. The ISS's confinement and the Earth's inaccessibility are the conditions that make the novel's ideas possible. Ask: what does this setting make the characters think and feel that they could not think or feel anywhere else? How does Harvey use physical space to explore her themes?</p>
+    </div>
+
+  </main>
+
+  <footer>
+    <p>Orbital by Samantha Harvey &nbsp;·&nbsp; VCE English Study Guide &nbsp;·&nbsp; Unit 3</p>
+    <p style="margin-top:0.4rem;">For educational use at VCASS.</p>
+  </footer>
+
+  <script>
+    const field = document.getElementById('starfield');
+    for (let i = 0; i < 200; i++) {
+      const star = document.createElement('div');
+      star.className = 'star';
+      const size = Math.random() * 2.2 + 0.5;
+      star.style.cssText = `width:${size}px;height:${size}px;top:${Math.random()*100}%;left:${Math.random()*100}%;--dur:${(Math.random()*4+2).toFixed(1)}s;--delay:${(Math.random()*4).toFixed(1)}s;opacity:${Math.random()*0.5+0.1};`;
+      field.appendChild(star);
+    }
+  </script>
+
+</body>
+</html>
