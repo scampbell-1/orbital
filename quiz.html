@@ -4,48 +4,39 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Quiz</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="styles.css">
+    <script src="script.js" defer></script>
 </head>
 <body>
-    <div id="quiz-container">
-        <h1>Quiz</h1>
-        <div id="question"></div>
-        <div id="options"></div>
-        <button onclick="nextQuestion()">Next</button>
+    <div id="quiz">
+        <h1>Flashcard Quiz</h1>
+        <div id="flashcards">
+        <!-- Flashcards go here -->
+        </div>
+        <div id="quiz-questions">
+        <!-- Quiz questions go here -->
+        </div>
+        <button id="start-quiz">Start Quiz</button>
     </div>
-    <script>
-        const questions = [
-            { question: 'Foundation Question 1?', options: ['A', 'B', 'C', 'D'], answer: 'A' },
-            { question: 'Foundation Question 2?', options: ['A', 'B', 'C', 'D'], answer: 'B' },
-            // ...additional Foundation questions...
-            { question: 'Intermediate Question 1?', options: ['A', 'B', 'C', 'D'], answer: 'B' },
-            // ...additional Intermediate questions...
-            { question: 'Expert Question 1?', options: ['A', 'B', 'C', 'D'], answer: 'C' },
-            // ...additional Expert questions...
-        ];
 
+    <script>
         function randomizeCorrectAnswers() {
+            // Logic to shuffle the positions of correct answers
+            let questions = [...]; // Assuming questions hold current questions before shuffling
             questions.forEach(question => {
-                const correctAnswer = question.answer;
-                const options = question.options;
-                const correctIndex = options.indexOf(correctAnswer);
-                // Shuffle options
-                for (let i = options.length - 1; i > 0; i--) {
-                    const j = Math.floor(Math.random() * (i + 1));
-                    [options[i], options[j]] = [options[j], options[i]];
-                }
-                // Update the index of the correct answer
-                question.answer = options.indexOf(correctAnswer);
+                let correctIndex = question.correctAnswerIndex;
+                let possibleAnswers = question.answers;
+                // Shuffle function logic here using Fisher-Yates or similar
+                // Set the new correct index after shuffling
+                question.correctAnswerIndex = newCorrectIndex; // Set the new index
             });
         }
 
-        function startLevel() {
-            randomizeCorrectAnswers();
-            nextQuestion();
-        }
-
-        function nextQuestion() {
-            // Logic to display the next question...
+        function startLevel(level) {
+            createPool(level);
+            randomizeCorrectAnswers(); // call after pool creation to shuffle correct answers
+            shuffle();
+            // Other start level logic...
         }
     </script>
 </body>
