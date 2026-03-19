@@ -689,11 +689,20 @@ function loadQuestion() {
 
   const optEl = document.getElementById('q-options');
   optEl.innerHTML = '';
-  q.options.forEach((opt, i) => {
+
+  // Shuffle options, tracking where the correct answer ends up
+  const indices = q.options.map((_, i) => i);
+  for (let i = indices.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [indices[i], indices[j]] = [indices[j], indices[i]];
+  }
+  const shuffledCorrect = indices.indexOf(q.correct);
+
+  indices.forEach((origIdx, displayIdx) => {
     const btn = document.createElement('button');
     btn.className = 'option-btn';
-    btn.innerText = opt;
-    btn.onclick = () => selectAnswer(i, btn);
+    btn.innerText = q.options[origIdx];
+    btn.onclick = () => selectAnswer(displayIdx, btn, shuffledCorrect);
     optEl.appendChild(btn);
   });
 
@@ -706,14 +715,14 @@ function loadQuestion() {
   nextBtn.innerText = 'Next Question →';
 }
 
-function selectAnswer(selectedIndex, btnElement) {
+function selectAnswer(selectedIndex, btnElement, shuffledCorrect) {
   const q = levelPool[levelQIndex];
   const options = document.querySelectorAll('.option-btn');
   const fb = document.getElementById('q-feedback');
 
   options.forEach(b => b.disabled = true);
 
-  const isCorrect = selectedIndex === q.correct;
+  const isCorrect = selectedIndex === shuffledCorrect;
   if (isCorrect) {
     btnElement.classList.add('correct');
     levelScore++;
@@ -722,7 +731,7 @@ function selectAnswer(selectedIndex, btnElement) {
     fb.classList.add('correct-feedback');
   } else {
     btnElement.classList.add('wrong');
-    options[q.correct].classList.add('correct');
+    options[shuffledCorrect].classList.add('correct');
     fb.innerHTML = `<strong>Incorrect.</strong> ${q.explanation}`;
     fb.classList.add('wrong-feedback');
   }
