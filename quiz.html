@@ -1,35 +1,52 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Quiz</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <h1>Quiz</h1>
-    <form>
-        <div>
-            <label for="question">Question</label>
-            <input type="text" id="question" name="question" />
-        </div>
-        <div>
-            <label for="answer0">A</label>
-            <input type="radio" id="answer0" name="answer" value="0" />
-            <input type="text" id="answer0" name="answerText0" />
-        </div>
-        <div>
-            <label for="answer1">B</label>
-            <input type="radio" id="answer1" name="answer" value="1" />
-            <input type="text" id="answer1" name="answerText1" />
-        </div>
-        <div>
-            <label for="answer2">C</label>
-            <input type="radio" id="answer2" name="answer" value="2" />
-            <input type="text" id="answer2" name="answerText2" />
-        </div>
-        <div>
-            <label for="answer3">D</label>
-            <input type="radio" id="answer3" name="answer" value="3" />
-            <input type="text" id="answer3" name="answerText3" />
-        </div>
-        <input type="submit" value="Submit" />
-    </form>
+    <div id="quiz-container">
+        <h1>Quiz</h1>
+        <div id="question"></div>
+        <div id="options"></div>
+        <button onclick="nextQuestion()">Next</button>
+    </div>
+    <script>
+        const questions = [
+            { question: 'Foundation Question 1?', options: ['A', 'B', 'C', 'D'], answer: 'A' },
+            { question: 'Foundation Question 2?', options: ['A', 'B', 'C', 'D'], answer: 'B' },
+            // ...additional Foundation questions...
+            { question: 'Intermediate Question 1?', options: ['A', 'B', 'C', 'D'], answer: 'B' },
+            // ...additional Intermediate questions...
+            { question: 'Expert Question 1?', options: ['A', 'B', 'C', 'D'], answer: 'C' },
+            // ...additional Expert questions...
+        ];
+
+        function randomizeCorrectAnswers() {
+            questions.forEach(question => {
+                const correctAnswer = question.answer;
+                const options = question.options;
+                const correctIndex = options.indexOf(correctAnswer);
+                // Shuffle options
+                for (let i = options.length - 1; i > 0; i--) {
+                    const j = Math.floor(Math.random() * (i + 1));
+                    [options[i], options[j]] = [options[j], options[i]];
+                }
+                // Update the index of the correct answer
+                question.answer = options.indexOf(correctAnswer);
+            });
+        }
+
+        function startLevel() {
+            randomizeCorrectAnswers();
+            nextQuestion();
+        }
+
+        function nextQuestion() {
+            // Logic to display the next question...
+        }
+    </script>
 </body>
 </html>
